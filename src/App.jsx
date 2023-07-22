@@ -1,5 +1,23 @@
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
+import {useEffect, useReducer} from "react";
+
+const initialState = {
+	questions: [],
+	// loading, error, ready, active, finished
+	status: "loading",
+};
+
+function reducer(state, action) {
+	switch (action.type) {
+		case "dataReceived":
+			return {...state, questions: action.payload, status: "ready"};
+		case "dataFailed":
+			return {...state, status: "error"};
+		default:
+			throw new Error("Unknown Action!");
+	}
+}
 
 export default function App() {
 	const [state, dispatch] = useReducer(reducer, initialState);
