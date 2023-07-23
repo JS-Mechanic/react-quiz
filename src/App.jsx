@@ -1,6 +1,9 @@
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import {useEffect, useReducer} from "react";
+import Loader from "./Loader.jsx";
+import Error from "./Error.jsx";
+import StartScreen from "./StartScreen.jsx";
 
 const initialState = {
 	questions: [],
