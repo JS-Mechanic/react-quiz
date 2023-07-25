@@ -49,7 +49,10 @@ function reducer(state, action) {
 }
 
 export default function App() {
-	const [{questions, status, index, answer, points}, dispatch] = useReducer(reducer, initialState);
+	const [{questions, status, index, answer, points, highScore}, dispatch] = useReducer(
+		reducer,
+		initialState,
+	);
 	const numQuestions = questions.length;
 	const maxPossiblePoints = questions.reduce((prev, curr) => prev + curr.points, 0);
 
@@ -80,7 +83,19 @@ export default function App() {
 							<Question question={questions.at(index)} dispatch={dispatch} answer={answer} />
 						</>
 					)}
-					<NextButton dispatch={dispatch} answer={answer} />
+					<NextButton
+						dispatch={dispatch}
+						answer={answer}
+						index={index}
+						numQuestions={numQuestions}
+					/>
+					{status === "finished" && (
+						<FinishScreen
+							points={points}
+							maxPossiblePoints={maxPossiblePoints}
+							highScore={highScore}
+						/>
+					)}
 				</>
 			</Main>
 		</div>
