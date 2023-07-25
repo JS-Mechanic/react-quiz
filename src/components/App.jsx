@@ -37,6 +37,12 @@ function reducer(state, action) {
 			};
 		case "nextQuestion":
 			return {...state, index: state.index + 1, answer: null};
+		case "finish":
+			return {
+				...state,
+				status: "finished",
+				highScore: state.points > state.highScore ? state.points : state.highScore,
+			};
 		default:
 			throw new Error("Unknown Action!");
 	}
