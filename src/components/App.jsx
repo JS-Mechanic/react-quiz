@@ -7,6 +7,7 @@ import StartScreen from "./StartScreen.jsx";
 import Question from "./Question.jsx";
 import NextButton from "./NextButton.jsx";
 import Progress from "./Progress.jsx";
+import FinishScreen from "./FinishScreen.jsx";
 
 const initialState = {
 	questions: [],
@@ -15,6 +16,7 @@ const initialState = {
 	index: 0,
 	answer: null,
 	points: 0,
+	highScore: 0,
 };
 
 function reducer(state, action) {
