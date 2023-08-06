@@ -37,6 +37,7 @@ function reducer(state, action) {
 				secondsRemaining: state.questions.length * SECONDS_PER_QUESTION,
 			};
 		case "newAnswer":
+			// eslint-disable-next-line no-case-declarations
 			const question = state.questions.at(state.index);
 			return {
 				...state,
@@ -76,7 +77,7 @@ export default function App() {
 		fetch("http://localhost:8000/questions")
 			.then(res => res.json())
 			.then(data => dispatch({type: "dataReceived", payload: data}))
-			.catch(err => dispatch({type: "dataFailed"}));
+			.catch(() => dispatch({type: "dataFailed"}));
 	}, []);
 
 	return (
