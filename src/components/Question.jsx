@@ -1,6 +1,10 @@
 import Options from "./Options.jsx";
+import {useQuiz} from "../context/QuizContext.jsx";
 
-const Question = ({question, dispatch, answer}) => {
+const Question = () => {
+	const {questions, dispatch, answer, index} = useQuiz();
+	const question = questions.at(index);
+
 	return (
 		<div>
 			<h4>{question.question}</h4>
